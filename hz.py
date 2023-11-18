@@ -2,7 +2,7 @@ import datetime as dt
 
 FORMAT='%H:%M'
 day_start = '9:00'
-day_stop = '21:00'
+day_stop = '23:00'
 busy = [{'start':'10:30', 'stop':'10:50'},{'start':'18:40', 'stop':'18:50'},{'start':'14:40', 'stop':'15:50'},{'start':'16:40', 'stop':'17:20'},{'start':'20:05', 'stop':'20:20'}]
 busy_start, busy_stop = [],[]
 busy_work_start, busy_work_stop  = [],[]
@@ -23,7 +23,7 @@ def pars_dict(start, stop, dict_busy):
             else:
                 prom_start_1 = dt.datetime.strptime(busy_stop[j], FORMAT)
                 flug = False
-        if day_time_start>= dt.datetime.strptime('20:30', FORMAT):
+        if day_time_start>= dt.datetime.strptime(day_stop, FORMAT) - dt.timedelta(minutes=30):
             break
         if flug == True:
             busy_work_start.append(prom_start)
